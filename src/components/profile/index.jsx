@@ -10,9 +10,12 @@ const getprofile = async (token, setprofile) => {
   };
 
   try {
-    const res = await axios.get("http://localhost:5000/api/profile/me", {
-      headers,
-    });
+    const res = await axios.get(
+      "https://ppusherbackend-u9sl.onrender.com/api/profile/me",
+      {
+        headers,
+      }
+    );
     console.log(res);
     setprofile(res.data);
   } catch (err) {
