@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import transition from "../../transition/index.jsx";
 
-export default function Landing() {
+const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -51,3 +52,7 @@ export default function Landing() {
     </div>
   );
 }
+
+// const Landing = transition(LandingPage);
+const Landing = LandingPage;
+export default Landing

@@ -6,8 +6,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../contexts/authContext";
+import transition from "../../transition/index.jsx";
 
-const Home = () => {
+const HomePage = () => {
   const { searchResults, socket, setSearchResults } = useSocket();
   const [searchTerm, setSearchTerm] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
@@ -235,7 +236,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-[90%]">
       <div className="grid sm:grid-cols-10 grid-cols-4 items-center p-4">
         <input
           type="text"
@@ -253,7 +254,7 @@ const Home = () => {
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 overflow-y-hidden p-4 text-white">
         <h2>Search Results</h2>
         <ul className="max-h-full overflow-y-auto">
           {searchResults.map((song, index) => (
@@ -302,4 +303,6 @@ const Home = () => {
   );
 };
 
+// const Home = transition(HomePage);
+const Home = HomePage;
 export default Home;

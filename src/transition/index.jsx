@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import "./App.css";
+import "./index.css";
 
 const transition = (OgComponent) => {
   return () => (
