@@ -5,6 +5,8 @@ import Landing from "./components/landing";
 import Header from "./components/header";
 import Home from "./components/home";
 import Profile from "./components/profile";
+import Upload from "./components/upload";
+import { SocketProvider } from "./components/socketcontext";
 
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
@@ -31,13 +33,20 @@ function App() {
       path: "/profile",
       element: <Profile />,
     },
+    {
+      path: "/upload",
+      element: <Upload />,
+    }
   ];
   let routesElement = useRoutes(routesArray);
   return (
-    <AuthProvider>
-      <Header />
-      <div className="w-full h-screen flex flex-col">{routesElement}</div>
-    </AuthProvider>
+    <SocketProvider>
+      <AuthProvider>
+        <Header />
+        <div className="w-full h-screen flex flex-col">{routesElement}</div>
+      </AuthProvider>
+    </SocketProvider>
+
   );
 }
 
