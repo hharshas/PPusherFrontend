@@ -179,7 +179,7 @@ const Upload = () => {
         <button
           type="button"
           onClick={handleSendSong}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 focus:outline-none"
+          className="w-full bg-[#502e6e] text-white py-2 rounded hover:bg-[#452A5A] focus:outline-none"
         >
           Send Song
         </button>

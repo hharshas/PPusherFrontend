@@ -49,7 +49,7 @@ const List = ({ items, files }) => {
 
   return (
     <div className=" max-w-full min-w-72  mx-auto my-10">
-      <div className="bg-gray-700 shadow-lg rounded-lg overflow-scroll">
+      <div className="bg-gray-700 shadow-lg rounded-lg overflow-hidden">
         <ul className="divide-y divide-gray-700">{listitems} </ul>
       </div>
     </div>

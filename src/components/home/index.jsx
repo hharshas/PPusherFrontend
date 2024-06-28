@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../contexts/authContext";
 import transition from "../../transition/index.jsx";
+import List from "./list.jsx";
 
 const HomePage = () => {
   const { searchResults, socket, setSearchResults } = useSocket();
@@ -202,7 +203,6 @@ const HomePage = () => {
   };
 
   const likeSong = async () => {
-
     const data = {
       name: songName,
     };
@@ -230,8 +230,8 @@ const HomePage = () => {
   const toggleLike = () => {
     setIsLiked(!isLiked);
 
-    if(isLiked == false) setSongDetail(songDetail+1);
-    else setSongDetail(songDetail-1);
+    if (isLiked == false) setSongDetail(songDetail + 1);
+    else setSongDetail(songDetail - 1);
     likeSong();
   };
 
@@ -248,7 +248,7 @@ const HomePage = () => {
         <button
           type="button"
           onClick={handleSearch}
-          className="flex items-center justify-center h-full bg-gray-500 text-white hover:bg-gray-600 focus:outline-none px-4"
+          className="flex items-center justify-center h-full bg-[#452A5A] text-white hover:bg-[#502e6e] focus:outline-none px-4"
         >
           <i className="fa fa-search"></i>
         </button>
@@ -257,20 +257,7 @@ const HomePage = () => {
       <div className="flex-1 overflow-y-hidden p-4 text-white">
         <h2>Search Results</h2>
         <ul className="max-h-full overflow-y-auto">
-          {searchResults.map((song, index) => (
-            <li
-              key={index}
-              className="mb-4 border border-gray-300 rounded p-4 flex justify-between items-center"
-            >
-              <span>
-                <strong>Song Name: </strong> {song.fileName}
-              </span>
-              <audio className="w-1/2" controls>
-                <source src={song.dataURL} type="audio/wav" />
-                Your browser does not support the audio element.
-              </audio>
-            </li>
-          ))}
+          <List items={searchResults} />
         </ul>
       </div>
 
@@ -279,7 +266,7 @@ const HomePage = () => {
           type="button"
           onClick={mergeAndPlaySongs}
           disabled={isPlaying}
-          className="sm:col-span-9 col-span-3 bg-blue-500 text-white p-4 hover:bg-blue-600 focus:outline-none"
+          className="sm:col-span-9 col-span-3 bg-[#452A5A] text-white p-4 hover:bg-[#502e6e] focus:outline-none"
         >
           {isPlaying ? (
             <i className="fa fa-spinner fa-spin"></i>
@@ -291,9 +278,11 @@ const HomePage = () => {
           type="button"
           onClick={toggleLike}
           className={`bg-gray-300 text-gray-700 p-4 hover:bg-gray-400 focus:outline-none ${
-            isLiked ? "text-red-500" : ""
+            isLiked ? "text-[#452A5A]" : ""
           }`}
-        > {songDetail}
+        >
+          {" "}
+          {songDetail}
           <i className={`fa ${isLiked ? "fa-heart" : "fa-heart-o"} mx-2`}></i>
         </button>
       </div>
