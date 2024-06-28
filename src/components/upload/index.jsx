@@ -1,10 +1,36 @@
 import React, { useState } from "react";
 import { useSocket } from "../socketcontext/index.jsx";
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from "../../contexts/authContext";
+
+
+const addSong = async (token, songName) => {
+    const data = {
+        name: songName
+    };
+    const headers = {
+        accesstoken: token,
+    };
+    try {
+      const response = await axios.post('https://ppusherbackend-u9sl.onrender.com/api/songs/add', data, {
+        headers
+      });
+      toast.success('Song added successfully!');
+      console.log(response.data);
+    } catch (error) {
+      toast.error('Error adding song. Please try again later.');
+      console.error('Error adding song:', error);
+    }
+  };
+  
 
 const Upload = () => {
   const { socket } = useSocket();
   const [selectedFile, setSelectedFile] = useState(null);
   const [songName, setSongName] = useState("");
+  const { currentUser, userLoggedIn } = useAuth();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -31,6 +57,7 @@ const Upload = () => {
       const secondHalfDataURL = await exportAudioBufferAsWav(secondHalfBuffer, audioContext);
 
       if (socket) {
+        addSong(currentUser.accessToken, songName.trim());
         socket.emit("sendSong", { songData: { fileName: `${songName.trim()}_firsthalf`, fileType: 'audio/wav', dataURL: firstHalfDataURL } });
         socket.emit("sendSong", { songData: { fileName: `${songName.trim()}_secondhalf`, fileType: 'audio/wav', dataURL: secondHalfDataURL } });
 
@@ -157,6 +184,7 @@ const Upload = () => {
           Send Song
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };
