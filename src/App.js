@@ -36,21 +36,18 @@ function App() {
     {
       path: "/upload",
       element: <Upload />,
-    }
+    },
   ];
   let routesElement = useRoutes(routesArray);
   return (
-<<<<<<< HEAD
-
-=======
     <SocketProvider>
       <AuthProvider>
         <Header />
-        <div className="w-full bg-gray-900 h-screen flex flex-col">{routesElement}</div>
+        <div className="w-full bg-gray-900 h-screen flex flex-col">
+          {routesElement}
+        </div>
       </AuthProvider>
     </SocketProvider>
-
->>>>>>> e58eaba9790816af43279b545b868d3558e5655f
   );
 }
 

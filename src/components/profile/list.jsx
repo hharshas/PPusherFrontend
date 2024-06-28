@@ -1,6 +1,17 @@
-const List = (items) => {
-  console.log(items);
-  const listitems = items.items.map((item, index) => {
+const List = ({ items, files }) => {
+  console.log("rendering list");
+  if (items) {
+    console.log(items);
+  } else {
+    console.log(files);
+    const newarr = files.map((item, index) => {
+      return { name: item.fileName };
+    });
+    items = newarr;
+    console.log(items);
+  }
+
+  const listitems = items.map((item, index) => {
     return (
       <li
         key={index}
@@ -37,8 +48,8 @@ const List = (items) => {
   });
 
   return (
-    <div className="max-w-max mx-auto my-10">
-      <div className="bg-gray-700 shadow-lg rounded-lg overflow-hidden">
+    <div className=" max-w-full min-w-72  mx-auto my-10">
+      <div className="bg-gray-700 shadow-lg rounded-lg overflow-scroll">
         <ul className="divide-y divide-gray-700">{listitems} </ul>
       </div>
     </div>
