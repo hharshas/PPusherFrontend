@@ -50,11 +50,15 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-let navigation = [];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
+const navigation = [
+  { name: 'Home', href: '/home', current: false },
+  { name: 'Upload', href: '/upload', current: false },
+];
+
 
 export default function Header() {
   const navigate = useNavigate();
