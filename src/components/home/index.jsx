@@ -221,7 +221,7 @@ const Home = () => {
       toast.success("liked successfully !!");
       console.log(response.data);
     } catch (error) {
-      toast.error("Error adding song. Please try again later.");
+      toast.error("Failed to like.");
       console.error("Error adding song:", error);
     }
   };
