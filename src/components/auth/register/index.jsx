@@ -3,6 +3,7 @@ import { Navigate, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/authContext";
 import { doCreateUserWithEmailAndPassword } from "../../../firebase/auth";
 import logo from "../../header/logo.png";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -13,13 +14,29 @@ const Register = () => {
   const [isRegistering, setIsRegistering] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { userLoggedIn } = useAuth();
+  const { userLoggedIn, currentUser } = useAuth();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!isRegistering) {
       setIsRegistering(true);
-      await doCreateUserWithEmailAndPassword(email, password);
+      const user = await doCreateUserWithEmailAndPassword(email, password);
+      console.log(user);
+      const headers = {
+        accesstoken: user.accessToken,
+      };
+
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/profile/add",
+          {},
+          {
+            headers,
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 

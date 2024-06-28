@@ -4,6 +4,7 @@ import Register from "./components/auth/register";
 import Landing from "./components/landing";
 import Header from "./components/header";
 import Home from "./components/home";
+import Profile from "./components/profile";
 
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
@@ -25,6 +26,10 @@ function App() {
     {
       path: "/home",
       element: <Home />,
+    },
+    {
+      path: "/profile",
+      element: <Profile />,
     },
   ];
   let routesElement = useRoutes(routesArray);

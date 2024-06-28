@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../header/logo.png";
 import { Navigate, Link } from "react-router-dom";
 import {
@@ -6,9 +6,10 @@ import {
   doSignInWithGoogle,
 } from "../../../firebase/auth";
 import { useAuth } from "../../../contexts/authContext";
+import axios from "axios";
 
 const Login = () => {
-  const { userLoggedIn } = useAuth();
+  const { userLoggedIn, currentUser } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,18 +20,54 @@ const Login = () => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
-      await doSignInWithEmailAndPassword(email, password);
+      const user = await doSignInWithEmailAndPassword(email, password);
+      console.log(user.accessToken);
+
+      const headers = {
+        accesstoken: user.accessToken,
+      };
+
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/profile/add",
+          {},
+          {
+            headers,
+          }
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
       // doSendEmailVerification()
     }
   };
 
-  const onGoogleSignIn = (e) => {
+  const onGoogleSignIn = async (e) => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
-      doSignInWithGoogle().catch((err) => {
+      const user = await doSignInWithGoogle().catch((err) => {
         setIsSigningIn(false);
       });
+      console.log(user.accessToken);
+
+      const headers = {
+        accesstoken: user.accessToken,
+      };
+
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/api/profile/add",
+          {},
+          {
+            headers,
+          }
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
