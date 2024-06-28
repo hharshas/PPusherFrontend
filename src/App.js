@@ -7,6 +7,7 @@ import Home from "./components/home";
 import Profile from "./components/profile";
 import Upload from "./components/upload";
 import { SocketProvider } from "./components/socketcontext";
+import { AnimatePresence } from "framer-motion";
 
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
@@ -36,17 +37,18 @@ function App() {
     {
       path: "/upload",
       element: <Upload />,
-    }
+    },
   ];
   let routesElement = useRoutes(routesArray);
   return (
     <SocketProvider>
       <AuthProvider>
         <Header />
-        <div className="w-full h-screen flex flex-col">{routesElement}</div>
+        <AnimatePresence mode="wait">
+          <div className="w-full h-screen flex flex-col">{routesElement}</div>
+        </AnimatePresence>
       </AuthProvider>
     </SocketProvider>
-
   );
 }
 
