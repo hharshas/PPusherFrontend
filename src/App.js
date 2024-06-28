@@ -41,17 +41,12 @@ function App() {
   let routesElement = useRoutes(routesArray);
   return (
 <<<<<<< HEAD
-    <AuthProvider>
-      <Header />
-      <div className="w-full bg-gray-900 h-screen flex flex-col">
-        {routesElement}
-      </div>
-    </AuthProvider>
+
 =======
     <SocketProvider>
       <AuthProvider>
         <Header />
-        <div className="w-full h-screen flex flex-col">{routesElement}</div>
+        <div className="w-full bg-gray-900 h-screen flex flex-col">{routesElement}</div>
       </AuthProvider>
     </SocketProvider>
 

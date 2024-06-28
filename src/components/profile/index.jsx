@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, Link } from "react-router-dom";
 import List from "./list";
+import { initDB, getAllSongs, saveSongToDB } from "../../indexeddb/index";
 
 import { useAuth } from "../../contexts/authContext";
 
@@ -40,13 +41,20 @@ const getprofile = async (token, setprofile) => {
 //   );
 // };
 
+const setcurrentsongs = async (setSongs) => {
+  const songs = await getAllSongs();
+  console.log(songs);
+  setSongs(songs);
+};
+
 export default function Profile() {
   const [profile, setprofile] = useState();
   const { currentUser, userLoggedIn } = useAuth();
+  const [songs, setSongs] = useState();
 
   useEffect(() => {
     getprofile(currentUser.accessToken, setprofile);
-    // console.log(profile);
+    setcurrentsongs(setSongs);
   }, [currentUser]);
 
   return (
