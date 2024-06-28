@@ -28,7 +28,7 @@ const Register = () => {
 
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/profile/add",
+          "https://ppusherbackend-u9sl.onrender.com/api/profile/add",
           {},
           {
             headers,
