@@ -1,9 +1,47 @@
-# `PPushr`
-### `ReactJS, NodeJS, Socket.IO, IndexedDB, MongoDB, Tailwind`
-• Created an alternative music streaming solution to the public that employs a peer-to-peer (P2P) ﬁle sharing protocol,
-reducing reliance on centralized servers. \
-• Utilized AudioContext Web APIs to split music ﬁles into chunks of at least 5 MB and store them on diﬀerent clients,
-which then serve as seeds to deliver the chunks upon request. \
-• Implemented a real-time chunks distribution system feature using WebSocket and Socket.io, enhancing seeds
-engagement and reducing response time by 20%. \
-• Project Proposal : [GDocs](https://docs.google.com/document/d/1Hx2uyTV1I3VIsVYGeah_zyg6tYx1rwGGDbJODi_pCGI/)
+## pPushr
+
+## Team (devin)
+- **Marmick Mathur (22je0547)**: Web Development
+- **Harsh Singh (22je0388)**: Web Development
+- **Ayush Barman (22je0208)**: Web Development
+
+## Problem
+All the big music streaming platforms use central client servers to host their songs. While this is a good approach, it has its cons, namely cost and infrastructure. Also, the servers have to constantly be scaled to match the user base.
+
+## Solution
+An app that uses a peer-to-peer file-sharing protocol to solve some of the said issues and provide an alternative to the public.
+
+## Key Features
+- Peer-to-peer file-sharing protocol
+- AI-enhanced
+
+## Tech Stack
+- MongoDB
+- Node.js
+- Express
+- React
+- Redux
+- Flask
+- Tailwind CSS
+
+## Implementation
+The idea is to use a peer-to-peer file-sharing protocol that enables the app to work on a much simpler and lighter server. The file will be split into chunks and then stored on different clients, which then serve as seeds to deliver the chunks upon a request. A tracker will be used as a lightweight central server to keep track of the chunks. Also, it will scale itself due to the inherent nature of the protocol.
+
+An AI model will be used to better the functionality of the protocol by choosing the best seed for chunk retrieval.
+
+## Challenges Anticipated
+- Keeping the system active when the user base is small
+- Piracy avoidance
+- Serving rare chunks when seeds are not active
+- Blocking leechers
+
+## Present Goals
+- Set up a peer-to-peer sharing server for songs
+- Utilize the AudioContext Web APIs to split music ﬁles into chunks and store them on diﬀerent clients,
+which then serve as seeds to deliver the chunks upon request
+- Implemente a real-time chunks distribution system feature using WebSocket and Socket.io
+- Develop a user-friendly UI
+
+## Future Goals
+- Extend the idea for sharing all types of files, rather than the current file type of MP3
+- Integrate with an AI model that chooses the best available seed
