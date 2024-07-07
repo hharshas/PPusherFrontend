@@ -1,10 +1,5 @@
 ## pPushr
 
-## Team (devin)
-- **Marmick Mathur (22je0547)**: Web Development
-- **Harsh Singh (22je0388)**: Web Development
-- **Ayush Barman (22je0208)**: Web Development
-
 ## Problem
 All the big music streaming platforms use central client servers to host their songs. While this is a good approach, it has its cons, namely cost and infrastructure. Also, the servers have to constantly be scaled to match the user base.
 
