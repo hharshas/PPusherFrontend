@@ -1,5 +1,5 @@
 # `PPushr`
-### `ReactJS, NodeJS, Socket.IO, IndexedDB, Tailwind`
+### `ReactJS, NodeJS, Socket.IO, IndexedDB, MongoDB, Tailwind`
 • Created an alternative music streaming solution to the public that employs a peer-to-peer (P2P) ﬁle sharing protocol,
 reducing reliance on centralized servers. \
 • Utilized AudioContext Web APIs to split music ﬁles into chunks of at least 5 MB and store them on diﬀerent clients,
